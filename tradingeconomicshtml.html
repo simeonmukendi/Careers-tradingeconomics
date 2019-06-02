@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script> 
+    var http = require('brains.tradingeconomics.com/v2/search/wb,fred,comtrade?q=china&pp=50&p=0&_=1557934352427&stance=2');
+    var http = require('https');
+  var headers = {
+      'Accept': 'Application/xml',
+      'Authorization': 'Client guest:guest'
+  };
+  var buffer = '';
+  var options = {
+      host: 'api.tradingeconomics.com',
+      port: 443,
+      path: '/indicators',
+      headers: headers
+  };
+  options.path = options.path.replace (' ','%20');
+  callback = function(response) {
+      response.on('data', function (chunk) {
+      buffer += chunk;
+  });
+  response.on('end', function (chunk;) {
+      // your code here if you want to use the results !
+  buffer += chunk;;
+  });
+  }
+  
+  var req = http.get(options, callback).end();   
+  document.write(req);
+    </script>
+  </head>
+
+  <body>
+
+  </body>
+
+</html>
